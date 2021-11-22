@@ -330,6 +330,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridSize: {x: 5, y: 5}
   tilesParent: {fileID: 1943902724}
+  tiles: []
   tileSize: 2
   cratePrefab: {fileID: 6178708844475092860, guid: f49cc12616392634faf2c69112ae281a, type: 3}
   wallPrefab: {fileID: 5870927771584226408, guid: 2d95bfa0abcf6b8459557c82526bb69e, type: 3}
@@ -371,7 +372,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1943902723}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.5661, y: -8.541006, z: 3.0748045}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

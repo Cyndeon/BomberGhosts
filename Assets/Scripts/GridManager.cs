@@ -19,7 +19,7 @@ public class GridManager : MonoBehaviour
     [SerializeField] Vector2Int gridSize;
     public tileTypes[,] grid { get; set; }
     [SerializeField] Transform tilesParent;
-    List<Tile> tiles;
+    [SerializeField] List<Tile> tiles;
 
     [Header("Variables")]
     [SerializeField] int tileSize = 3;
@@ -36,19 +36,21 @@ public class GridManager : MonoBehaviour
     {
         // first create the grid itself
         grid = new tileTypes[gridSize.x, gridSize.y];
+        tiles = new List<Tile>();
 
         for (int x = 0; x < gridSize.x; x++)
         {
             for (int y = 0; y < gridSize.y; y++)
             {
-                grid[x, y] = tileTypes.crate;
-
+                // create empty objects for the crates to spawn in later
                 GameObject _temp = new GameObject($"X: {x}, Y: {y}");
                 _temp.transform.SetParent(tilesParent);
                 _temp.transform.position = new Vector3(tileSize * x, 0, tileSize * y);
                 Tile _tileScript = _temp.AddComponent<Tile>();
                 _tileScript.tilePosition = new Vector2Int(x, y);
                 _tileScript.thisTileType = tileTypes.crate;
+
+                tiles.Add(_tileScript);
             }
         }
         // clear 4 corners so players can spawn there
@@ -62,44 +64,46 @@ public class GridManager : MonoBehaviour
 
     void UpdateGrid()
     {
-        for (int x = 0; x < grid.GetLength(0) - 1; x++)
+        for (int x = 0; x < grid.GetLength(0); x++)
         {
-            for (int y = 0; y < grid.GetLength(1) - 1; y++)
+            for (int y = 0; y < grid.GetLength(1); y++)
             {
-                for (int i = 0; i < tiles.Count; i++)
-                {
-                    // if the tile is already correct, then skip the updating phase
-                    if (tiles[i].thisTileType == grid[x, y]) goto SkipUpdate;
-                }
-                Tile _currentTile = tiles[index];
-                // if the tile is already correct, then skip the updating phase
-                if (_currentTile.thisTileType == grid[x, y]) goto SkipUpdate;
+                Tile _currentTile = GetTileFromList(new Vector2Int(x, y));
 
-                // first destroy all it's previous children so new ones can be spawned in
+                // if the tile is already what it should be, skip the updating phase
+                if (_currentTile.thisTileType == grid[x, y])
+                    goto SkipUpdate;
+
+
+                // update the grid of the new tile type
+                grid[x, y] = _currentTile.thisTileType;
+
+                // destroy all it's previous children so new ones can be spawned in
                 foreach (Transform child in _currentTile.transform)
                 {
                     Destroy(child);
                 }
-                switch (_currentTile.thisTileType)
+                switch (grid[x, y])
                 {
                     case tileTypes.none:
+                        Debug.Log("Nothing here");
                         break;
                     case tileTypes.crate:
-                        Instantiate(cratePrefab, tilesParent.transform.position, tilesParent.transform.rotation, tilesParent);
+                        Instantiate(cratePrefab, _currentTile.transform.position, _currentTile.transform.rotation, _currentTile.transform);
                         break;
                     case tileTypes.wall:
-                        Instantiate(wallPrefab, tilesParent.transform.position, tilesParent.transform.rotation, tilesParent);
+                        Instantiate(wallPrefab, _currentTile.transform.position, _currentTile.transform.rotation, _currentTile.transform);
                         break;
                     default:
                         break;
                 }
-                _currentTile.thisTileType = grid[x, y];
 
-                // if the tile was already correct, it's sent here
+            // if the tile was already correct, it's sent here
             SkipUpdate: { }
             }
         }
     }
+
 
     void ClearAroundTile(Vector2Int _tile, int _distance, tileTypes _newTileType = tileTypes.none)
     {
@@ -107,17 +111,31 @@ public class GridManager : MonoBehaviour
         {
             for (int y = -_distance; y < _distance; y++)
             {
-                if (grid.GetLength(0) + x > grid.GetLength(0) || grid.GetLength(1) + y > grid.GetLength(1)) break;
-                if (!CheckValidTile(new Vector2Int(grid.GetLength(0) + x, grid.GetLength(1) + y)))
-                    // CHECK IF ITS DESTRUCTIBLE FIRST (but later)
-                    grid[x, y] = _newTileType;
+                if (CheckValidTile(new Vector2Int(_tile.x + x, _tile.y + y)))
+                {
+                    // CHECK IF ITS DESTRUCTIBLE FIRST for bombs
+                    GetTileFromList(new Vector2Int(_tile.x + x, _tile.y + y)).thisTileType = _newTileType;
+                }
             }
         }
+    }
+    Tile GetTileFromList(Vector2Int _position)
+    {
+        for (int i = 0; i < tiles.Count; i++)
+        {
+            //check if the tile position is the same as the requested tile position
+            if (tiles[i].tilePosition == new Vector2Int(_position.x, _position.y))
+            {
+                return tiles[i];
+            }
+        }
+        Debug.LogError("Could not find requested tile");
+        return new Tile();
     }
     bool CheckValidTile(Vector2Int _tile)
     {
         if (_tile.x < 0 || _tile.y < 0) return false;
-        if (_tile.x > grid.GetLength(0) || _tile.y > grid.GetLength(1)) return false;
+        if (_tile.x > grid.GetLength(0) - 1 || _tile.y > grid.GetLength(1) - 1) return false;
         return true;
     }
 
