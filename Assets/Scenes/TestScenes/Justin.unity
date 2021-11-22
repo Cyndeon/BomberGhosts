@@ -328,7 +328,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f28371b65d66b1e499ad4317f58a18a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridSize: {x: 0, y: 0}
+  gridSize: {x: 2, y: 2}
+  tileSize: 3
 --- !u!4 &1799461558
 Transform:
   m_ObjectHideFlags: 0
