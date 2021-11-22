@@ -196,3 +196,4 @@ Received Import Request.
 Start importing Assets/Artists/Sprites/Ranking.png using Guid(51e5a8a3c8e261d47b42e3cb61cb1211) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b2b982a7c6e4c43dc8409d5b0c642685') in 0.043012 seconds 
   Import took 0.046103 seconds .
 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
