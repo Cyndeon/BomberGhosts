@@ -23,6 +23,7 @@ public class GridManager : MonoBehaviour
 
     [Header("Variables")]
     [SerializeField] int tileSize = 3;
+    [SerializeField] float gridManualUpdateCheckTimeSeconds = 10f;
 
     [Header("Prefabs")]
     [SerializeField] GameObject cratePrefab;
@@ -30,8 +31,22 @@ public class GridManager : MonoBehaviour
     private void Start()
     {
         CreateStartingGrid();
+        StartCoroutine(GridUpdateCheck());
     }
-
+    private void Update()
+    {
+        // DEBUG
+        if (Input.GetKeyDown(KeyCode.A))
+            SetRandomWalls(Random.Range(0, 10));
+    }
+    IEnumerator GridUpdateCheck()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(gridManualUpdateCheckTimeSeconds);
+            UpdateGrid();
+        }
+    }
     void CreateStartingGrid()
     {
         // first create the grid itself
@@ -54,14 +69,13 @@ public class GridManager : MonoBehaviour
             }
         }
         // clear 4 corners so players can spawn there
-        ClearAroundTile(new Vector2Int(0, 0), 1);
-        ClearAroundTile(new Vector2Int(0, gridSize.y), 1);
-        ClearAroundTile(new Vector2Int(gridSize.x - 1, 0), 1);
+        ClearAroundTile(new Vector2Int(1, 1), 1);
+        ClearAroundTile(new Vector2Int(1, gridSize.y - 1), 1);
+        ClearAroundTile(new Vector2Int(gridSize.x - 1, 1), 1);
         ClearAroundTile(new Vector2Int(gridSize.x - 1, gridSize.y - 1), 1);
 
         UpdateGrid();
     }
-
     void UpdateGrid()
     {
         for (int x = 0; x < grid.GetLength(0); x++)
@@ -81,7 +95,7 @@ public class GridManager : MonoBehaviour
                 // destroy all it's previous children so new ones can be spawned in
                 foreach (Transform child in _currentTile.transform)
                 {
-                    Destroy(child);
+                    GameObject.Destroy(child.gameObject);
                 }
                 switch (grid[x, y])
                 {
@@ -103,7 +117,23 @@ public class GridManager : MonoBehaviour
             }
         }
     }
-
+    void SetRandomWalls(int _amount)
+    {
+        var crateList = new List<Tile>();
+        // first get all tiles that are crates at the moment
+        for (int i = 0; i < tiles.Count; i++)
+        {
+            if (tiles[i].thisTileType == tileTypes.crate)
+                crateList.Add(tiles[i]);
+        }
+        for (int i = 0; i < _amount; i++)
+        {
+            if (crateList.Count < _amount) _amount = crateList.Count;
+            int _rand = Random.RandomRange(0, crateList.Count - 1);
+            GetTileFromList(crateList[_rand].tilePosition).thisTileType = tileTypes.wall;
+        }
+        UpdateGrid();
+    }
 
     void ClearAroundTile(Vector2Int _tile, int _distance, tileTypes _newTileType = tileTypes.none)
     {

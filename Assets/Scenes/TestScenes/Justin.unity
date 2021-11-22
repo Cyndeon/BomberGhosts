@@ -328,10 +328,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f28371b65d66b1e499ad4317f58a18a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridSize: {x: 5, y: 5}
+  gridSize: {x: 10, y: 10}
   tilesParent: {fileID: 1943902724}
   tiles: []
   tileSize: 2
+  gridManualUpdateCheckTimeSeconds: 10
   cratePrefab: {fileID: 6178708844475092860, guid: f49cc12616392634faf2c69112ae281a, type: 3}
   wallPrefab: {fileID: 5870927771584226408, guid: 2d95bfa0abcf6b8459557c82526bb69e, type: 3}
 --- !u!4 &1799461558
