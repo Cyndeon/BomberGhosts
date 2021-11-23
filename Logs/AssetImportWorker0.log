@@ -282,3 +282,4 @@ Received Import Request.
 Start importing Assets/Artists/Models/box.FBX using Guid(ce39e120b8d7f7a449e2603a865144f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '99e3d195566e3ab7f09ec159f06e52f8') in 0.053114 seconds 
   Import took 0.055598 seconds .
 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file

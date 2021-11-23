@@ -1,3 +1,6 @@
 Base path: 'E:/glu/Unity_projecten/2020.3.22f1/Editor/Data', plugins path 'E:/glu/Unity_projecten/2020.3.22f1/Editor/Data/PlaybackEngines'
 Cmd: initializeCompiler
 
+Cmd: shutdown
+
+Quitting shader compiler process
