@@ -69,10 +69,12 @@ public class GridManager : MonoBehaviour
             }
         }
         // clear 4 corners so players can spawn there
-        ClearAroundTile(new Vector2Int(1, 1), 1);
-        ClearAroundTile(new Vector2Int(1, gridSize.y - 1), 1);
-        ClearAroundTile(new Vector2Int(gridSize.x - 1, 1), 1);
-        ClearAroundTile(new Vector2Int(gridSize.x - 1, gridSize.y - 1), 1);
+        ClearAroundTile(new Vector2Int(2, 2), 1);
+        ClearAroundTile(new Vector2Int(2, gridSize.y - 2), 1);
+        ClearAroundTile(new Vector2Int(gridSize.x - 2, 2), 1);
+        ClearAroundTile(new Vector2Int(gridSize.x - 2, gridSize.y - 2), 1);
+
+        SetWallOutline();
 
         UpdateGrid();
     }
@@ -114,6 +116,25 @@ public class GridManager : MonoBehaviour
 
             // if the tile was already correct, it's sent here
             SkipUpdate: { }
+            }
+        }
+    }
+    void SetWallOutline()
+    {
+        // this function sets the borders all as walls to make sure the players can't escape
+        for (int x = 0; x < grid.GetLength(0); x++)
+        {
+            for (int y = 0; y < grid.GetLength(1); y++)
+            {
+                GetTileFromList(new Vector2Int(x, y)).thisTileType = tileTypes.wall;
+                if (x > 0 && x < grid.GetLength(0) - 1)
+                {
+                    Debug.Log(y);
+                    y = grid.GetLength(1)-1;
+                    GetTileFromList(new Vector2Int(x, y)).thisTileType = tileTypes.wall;
+                    break;
+                }
+                Debug.Log("There");
             }
         }
     }
