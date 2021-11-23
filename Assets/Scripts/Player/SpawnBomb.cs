@@ -12,11 +12,10 @@ public class SpawnBomb : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E)) // will change in the future to work together with the grid.
         {
             GameObject currentBomb;
             currentBomb = Instantiate(bombTypes[currentBombID], gridSize * new Vector3(Mathf.RoundToInt(transform.position.x / gridSize), .5f, Mathf.RoundToInt(transform.position.z / gridSize)), Quaternion.identity);
-            currentBomb.GetComponent<SphereCollider>().isTrigger = true;
         }
     }
 }
