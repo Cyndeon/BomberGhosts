@@ -169,3 +169,116 @@ Received Import Request.
 Start importing Assets/Artists/Models/Player (PH).fbx using Guid(b20a5e83f5360374e8c7e3b640ac7bcc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '876296b707b0f5358bd24a5557ca4548') in 0.029216 seconds 
   Import took 0.031227 seconds .
 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.005798 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.29 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.971 seconds
+Domain Reload Profiling:
+	ReloadAssembly (971ms)
+		BeginReloadAssembly (138ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (5ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (34ms)
+		EndReloadAssembly (772ms)
+			LoadAssemblies (114ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (286ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (35ms)
+			SetupLoadedEditorAssemblies (258ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (47ms)
+				ProcessInitializeOnLoadAttributes (191ms)
+				ProcessInitializeOnLoadMethodAttributes (8ms)
+				AfterProcessingInitializeOnLoad (6ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (6ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.31 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1492 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 70.7 MB.
+System memory in use after: 70.8 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 1975.
+Total: 2.916800 ms (FindLiveObjects: 0.133300 ms CreateObjectMapping: 0.040900 ms MarkObjects: 2.721100 ms  DeleteObjects: 0.020500 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 1154.163200 seconds.
+  path: Assets/Artists/Models/wall.fbx
+  artifactKey: Guid(5314d80377fac2f49a700a84adf2205d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Artists/Models/wall.fbx using Guid(5314d80377fac2f49a700a84adf2205d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3c1fd655e07331d0d2b8c637ec8fa218') in 0.096030 seconds 
+  Import took 0.098709 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 75.300322 seconds.
+  path: Assets/Artists/Models/box.prefab
+  artifactKey: Guid(c6dc367d6d8f8ce4c852df7aa3964f38) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Artists/Models/box.prefab using Guid(c6dc367d6d8f8ce4c852df7aa3964f38) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '50504ef698d0659ca6f4224adff03ee0') in 0.028412 seconds 
+  Import took 0.031905 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 23.827468 seconds.
+  path: Assets/Artists/Models/box.FBX
+  artifactKey: Guid(ce39e120b8d7f7a449e2603a865144f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Artists/Models/box.FBX using Guid(ce39e120b8d7f7a449e2603a865144f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c48c4cbaaeccd9d86026c04db38b64fa') in 0.056017 seconds 
+  Import took 0.059471 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 25.105410 seconds.
+  path: Assets/Artists/Models/wall.fbx
+  artifactKey: Guid(5314d80377fac2f49a700a84adf2205d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Artists/Models/wall.fbx using Guid(5314d80377fac2f49a700a84adf2205d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5ca888df0bb06de9e4207a2afecac7b0') in 0.038139 seconds 
+  Import took 0.040648 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 156.918048 seconds.
+  path: Assets/Artists/Models/wall.fbx
+  artifactKey: Guid(5314d80377fac2f49a700a84adf2205d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Artists/Models/wall.fbx using Guid(5314d80377fac2f49a700a84adf2205d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '753cabdfaf5103ead622a19270fb95eb') in 0.038414 seconds 
+  Import took 0.041287 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 265.765029 seconds.
+  path: Assets/Artists/Models/box.FBX
+  artifactKey: Guid(ce39e120b8d7f7a449e2603a865144f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Artists/Models/box.FBX using Guid(ce39e120b8d7f7a449e2603a865144f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5a75d3ad0dd5ed9bfadf408eb5204b9d') in 0.058484 seconds 
+  Import took 0.061080 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 108.322262 seconds.
+  path: Assets/Artists/Models/box.FBX
+  artifactKey: Guid(ce39e120b8d7f7a449e2603a865144f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Artists/Models/box.FBX using Guid(ce39e120b8d7f7a449e2603a865144f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '99e3d195566e3ab7f09ec159f06e52f8') in 0.053114 seconds 
+  Import took 0.055598 seconds .
+
