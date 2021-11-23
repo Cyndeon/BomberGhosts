@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(SpawnPlayers))]
 public class GridManager : MonoBehaviour
 {
     public static GridManager instance;
@@ -13,25 +14,33 @@ public class GridManager : MonoBehaviour
     {
         none = 0,
         crate,
-        wall
+        wall,
     }
-    [Header("Grid + tiles")]
-    [SerializeField] Vector2Int gridSize;
     public tileTypes[,] grid { get; set; }
+    [Header("Grid, Tiles")]
+    public Vector2Int gridSize;
     [SerializeField] Transform tilesParent;
     [SerializeField] List<Tile> tiles;
 
     [Header("Variables")]
-    [SerializeField] int tileSize = 3;
+    public int tileSize = 3;
     [SerializeField] float gridManualUpdateCheckTimeSeconds = 10f;
 
     [Header("Prefabs")]
     [SerializeField] GameObject cratePrefab;
     [SerializeField] GameObject wallPrefab;
+
+    // References
+    SpawnPlayers spawnP;
     private void Start()
     {
+        spawnP = GetComponent<SpawnPlayers>();
+        if (spawnP == null) Debug.LogError("NO SPAWNPLAYERS FOUND!");
+
         CreateStartingGrid();
         StartCoroutine(GridUpdateCheck());
+
+        spawnP.SpawnCharacters(spawnP.playerCount);
     }
     private void Update()
     {
@@ -170,7 +179,7 @@ public class GridManager : MonoBehaviour
             }
         }
     }
-    Tile GetTileFromList(Vector2Int _position)
+    public Tile GetTileFromList(Vector2Int _position)
     {
         for (int i = 0; i < tiles.Count; i++)
         {
